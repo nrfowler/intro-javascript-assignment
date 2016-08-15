@@ -13,27 +13,11 @@ function employee (name, manager) {
  * @param manager the manager to filter by
  * @param employees the employees to choose from
  */
-function underlings (manager, employees) {
-  let underlings = []
-  for (let i=0; i<employees.length; i++) {
-    if (employees[i].manager===manager) {
-      underlings.push(employees[i])
-    }
-  }
-  return underlings
-}
+
 
 function groupByManagerName (employees) {
-  //array of managers
-  function isManager(em){
-    for(let emp of employees){
-      if(emp.manager===em){
-        return true
-      }
-    }
-    return false
-  }
-  let managers=employees.filter(function(man, index, array){
+  map={}
+  let manNames=employees.filter(function(man, index, array){
 
     for(let emp of array){
       if(emp.manager===man){
@@ -42,16 +26,12 @@ function groupByManagerName (employees) {
     }
     return false
 
-  })
-  let manNames=managers.map( function(e){
+  }).map( function(e){
     return e.name
+  }).forEach(function(name){
+    map[name]=employees.filter(function(e){if (e.manager && e.manager.name===name) {return true} })
   })
-var map={}
-  manNames.forEach(function(manager){
-    var peons
-    map[manager.name]=underlings(manager,employees)
-  })
-  return map
+  return map //underlings("brad",employees)
 //object of manager names as keys, employee arrays as values
   //let obj=managers.map(new function(e){return underlings(e,employees)})
   //let map=managers.forEach(new function(e){
@@ -62,6 +42,5 @@ var map={}
 
 module.exports = {
   employee: employee,
-  underlings: underlings,
   groupByManagerName: groupByManagerName
 }
