@@ -23,7 +23,9 @@ function underlings (manager, employees) {
   return underlings
 }
 
+
+
 module.exports = {
-  employee,
-  underlings
+  employee: employee,
+  underlings: underlings
 }
