@@ -2,7 +2,7 @@
 const lib = require('./lib')
 const employee = lib.employee
 const underlings = lib.underlings
-
+const groupByManagerName = lib.groupByManagerName
 const brad = employee('brad')
 
 const frank = employee('frank', brad)
@@ -25,6 +25,8 @@ const employees = [
   chris
 ]
 
-console.log(`brad's underlings: ${JSON.stringify(underlings(brad, employees), null, 2)}`)
-console.log(`frank's underlings: ${JSON.stringify(underlings(frank, employees), null, 2)}`)
-console.log(`ed's underlings: ${JSON.stringify(underlings(ed, employees), null, 2)}`)
+//console.log(`brad's underlings: ${JSON.stringify(underlings(brad, employees), null, 2)}`)
+//console.log(`frank's underlings: ${JSON.stringify(underlings(frank, employees), null, 2)}`)
+//console.log(`ed's underlings: ${JSON.stringify(underlings(ed, employees), null, 2)}`)
+
+console.log(groupByManagerName(employees))

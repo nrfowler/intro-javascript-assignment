@@ -23,9 +23,45 @@ function underlings (manager, employees) {
   return underlings
 }
 
+function groupByManagerName (employees) {
+  //array of managers
+  function isManager(em){
+    for(let emp of employees){
+      if(emp.manager===em){
+        return true
+      }
+    }
+    return false
+  }
+  let managers=employees.filter(function(man, index, array){
+
+    for(let emp of array){
+      if(emp.manager===man){
+        return true
+      }
+    }
+    return false
+
+  })
+  let manNames=managers.map( function(e){
+    return e.name
+  })
+var map={}
+  manNames.forEach(function(manager){
+    var peons
+    map[manager.name]=underlings(manager,employees)
+  })
+  return map
+//object of manager names as keys, employee arrays as values
+  //let obj=managers.map(new function(e){return underlings(e,employees)})
+  //let map=managers.forEach(new function(e){
+
+
+}
 
 
 module.exports = {
   employee: employee,
-  underlings: underlings
+  underlings: underlings,
+  groupByManagerName: groupByManagerName
 }
