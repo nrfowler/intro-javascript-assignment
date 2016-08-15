@@ -14,7 +14,13 @@ function employee (name, manager) {
  * @param employees the employees to choose from
  */
 function underlings (manager, employees) {
-  // TODO
+  let underlings = []
+  for (let i=0; i<employees.length; i++) {
+    if (employees[i].manager===manager) {
+      underlings.push(employees[i])
+    }
+  }
+  return underlings
 }
 
 module.exports = {
