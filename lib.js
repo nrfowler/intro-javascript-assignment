@@ -17,24 +17,13 @@ function employee (name, manager) {
 
 function groupByManagerName (employees) {
   map={}
-  let manNames=employees.filter(function(man, index, array){
-
-    for(let emp of array){
-      if(emp.manager===man){
-        return true
-      }
-    }
-    return false
-
+  let manNames=employees.filter(function(e){ return e.manager!=undefined
   }).map( function(e){
-    return e.name
+    return e.manager.name
   }).forEach(function(name){
     map[name]=employees.filter(function(e){if (e.manager && e.manager.name===name) {return true} })
   })
-  return map //underlings("brad",employees)
-//object of manager names as keys, employee arrays as values
-  //let obj=managers.map(new function(e){return underlings(e,employees)})
-  //let map=managers.forEach(new function(e){
+  return map
 
 
 }
